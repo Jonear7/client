@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// /src/App.js
 
-function App() {
+import React from 'react';
+import { ApolloProvider } from '@apollo/client';
+import client from './graphql/client'; // Import your Apollo Client instance
+import AddProduct from './components/AddProduct';
+import ProductList from './components/ProductList';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="container mx-auto p-4 bg-gray-100 rounded-2xl mt-28">
+        <AddProduct />
+        <ProductList />
+      </div>
+    </ApolloProvider>
   );
-}
+};
 
 export default App;
